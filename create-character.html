@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Character - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create-campaign.css">
+    <style>
+        /* Додаткові стилі для цієї сторінки, щоб уникнути редагування основного CSS */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .skill-item { 
+            display: flex; 
+            align-items: center;
+            background-color: rgba(0,0,0,0.1);
+            padding: 8px;
+            border-radius: var(--border-radius);
+        }
+        .skill-item input[type="checkbox"] { 
+            margin-right: 10px; 
+            width: 18px;
+            height: 18px;
+        }
+        .skill-item label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid var(--color-primary);
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <!-- Вставте сюди ваш стандартний, динамічний хедер -->
+    </header>
+    
+    <main class="create-campaign-main">
+        <div class="container">
+            <!-- Збільшуємо ширину контейнера форми -->
+            <div class="form-container" style="max-width: 900px;">
+                <h1>Create a New Character</h1>
+                <form id="createCharacterForm">
+                    <!-- Основна інформація -->
+                    <h2>Basic Information</h2>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="charName">Character Name:</label>
+                            <input type="text" id="charName" placeholder="E.g., Elara Meadowlight" required>
+                        </div>
+                        <div class="col form-group">
+                            <label for="charClass">Class:</label>
+                            <input type="text" id="charClass" placeholder="E.g., Ranger" required>
+                        </div>
+                        <div class="col form-group">
+                            <label for="charRace">Race:</label>
+                            <input type="text" id="charRace" placeholder="E.g., Wood Elf" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="charBackground">Background:</label>
+                            <input type="text" id="charBackground" placeholder="E.g., Outlander">
+                        </div>
+                        <div class="col form-group">
+                            <label for="charAlignment">Alignment:</label>
+                            <input type="text" id="charAlignment" placeholder="E.g., Neutral Good">
+                        </div>
+                    </div>
+                    
+                    <hr>
+
+                    <!-- Генерація Характеристик -->
+                    <h2>Ability Scores</h2>
+                    <div class="dice-roll-section">
+                        <p>1. Roll your stats. 2. Assign the rolled values to the abilities below.</p>
+                        <button type="button" id="rollStatsBtn" class="btn secondary-btn">Roll Stats (4d6 drop lowest)</button>
+                        <div id="rolled-stats-pool" class="stats-pool"></div>
+                    </div>
+                    
+                    <div class="ability-scores-grid">
+                        <div class="form-group"><label for="strength">Strength</label><input type="number" id="strength" class="stat-input" required></div>
+                        <div class="form-group"><label for="dexterity">Dexterity</label><input type="number" id="dexterity" class="stat-input" required></div>
+                        <div class="form-group"><label for="constitution">Constitution</label><input type="number" id="constitution" class="stat-input" required></div>
+                        <div class="form-group"><label for="intelligence">Intelligence</label><input type="number" id="intelligence" class="stat-input" required></div>
+                        <div class="form-group"><label for="wisdom">Wisdom</label><input type="number" id="wisdom" class="stat-input" required></div>
+                        <div class="form-group"><label for="charisma">Charisma</label><input type="number" id="charisma" class="stat-input" required></div>
+                    </div>
+                    <p id="validation-message" class="feedback"></p>
+
+                    <hr>
+
+                    <!-- Блок вибору Biegłości (Proficiencies) -->
+                    <h2>Proficiencies</h2>
+                    <p>Select your saving throw and skill proficiencies based on your class and background.</p>
+                    
+                    <h3>Saving Throws</h3>
+                    <div id="saving-throws-list" class="skills-grid">
+                        <!-- Чекбокси для рятувальних кидків будуть згенеровані тут через JS -->
+                    </div>
+
+                    <h3 style="margin-top: 20px;">Skills</h3>
+                    <div id="skills-list" class="skills-grid">
+                        <!-- Чекбокси для навичок будуть згенеровані тут через JS -->
+                    </div>
+
+                    <hr>
+
+                    <!-- Блок Personality -->
+                    <h2>Personality</h2>
+                    <div class="form-group">
+                        <label for="personalityTraits">Personality Traits</label>
+                        <textarea id="personalityTraits" rows="3" placeholder="Describe your character's main traits..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="ideals">Ideals</label>
+                        <textarea id="ideals" rows="2" placeholder="What does your character believe in?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bonds">Bonds</label>
+                        <textarea id="bonds" rows="2" placeholder="What connects your character to the world?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="flaws">Flaws</label>
+                        <textarea id="flaws" rows="2" placeholder="What is your character's greatest weakness?"></textarea>
+                    </div>
+
+                    <!-- Кнопка збереження -->
+                    <div class="form-actions">
+                        <button type="submit" id="saveCharBtn" class="btn primary-btn">Save Character</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Скрипти -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="create-character.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* Importuje ogólne style, które już masz */
+@import url('style.css');
+
+/* Specyficzne style dla strony tworzenia kampanii */
+
+.create-campaign-main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.create-campaign-main .container {
+    background-color: var(--color-bg-light);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 1100px;
+    width: 100%;
+}
+
+.create-campaign-main h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.campaign-form .form-group {
+    
+    margin-bottom: 20px;
+}
+
+.personality-form .form-group {
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.personality-form .form-group textarea {
+    
+    height: 60px;
+}
+
+.campaign-form label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.1em;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+}
+
+.campaign-form input[type="text"],
+.campaign-form input[type="number"],
+.campaign-form select,
+.campaign-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1em;
+    background-color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.campaign-form input[type="text"]:focus,
+.campaign-form input[type="number"]:focus,
+.campaign-form select:focus,
+.campaign-form textarea:focus {
+    border-color: var(--color-accent);
+    outline: none;
+}
+
+.campaign-form textarea {
+    resize: vertical; /* Pozwala użytkownikowi zmieniać wysokość textarea */
+}
+
+.campaign-form input[type="file"] {
+    padding: 10px 0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.form-actions .btn {
+    width: 180px; /* Dopasuj szerokość przycisków */
+    text-align: center;
+}
+
+/* Styles for Character Creation */
+.dice-roll-section {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: var(--border-radius);
+}
+.stats-pool {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.stat-bubble {
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.ability-scores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    text-align: center;
+}
+.stat-input {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Responsywność dla formularza */
+@media (max-width: 600px) {
+    .create-campaign-main .container {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+.feedback {
+    min-height: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.feedback-error {
+    color: #e74c3c;
+}
+.feedback-success {
+    color: #2ecc71;
+}
+

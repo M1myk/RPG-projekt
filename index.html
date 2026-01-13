@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chronicles of Adventure</title>
+
+  <!-- External stylesheet (all styles moved to style.css) -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Fonts (kept as you had them) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Find or run unforgettable tabletop campaigns — beautifully organized, instantly social.">
+</head>
+<body>
+  <!-- decorative overlay (keeps class so your code referencing it still works) -->
+  <div class="background-overlay" aria-hidden="true"></div>
+
+  <header class="main-header" role="banner">
+    <div class="container">
+      <a href="#" class="logo">Chronicles of Adventure</a>
+      <nav class="main-nav" role="navigation" aria-label="Main">
+        <ul>
+          <li><a href="#" class="active" data-i18n="nav-home">Home</a></li>
+          <li><a href="find-game.html" data-i18n="nav-find-game">Find a Game</a></li>
+          <li><a href="create-campaign.html" data-i18n="nav-create">Create</a></li>
+          <li><a href="campaign-panel.html" data-i18n="nav-my-campaigns">My Campaigns</a></li>
+          <li id="nav-user-action"><a href="login.html" data-i18n="nav-sign-in">Sign In</a></li>
+          <li>
+            <select class="language" id="language" name="language">
+              <option value="english">English</option>
+              <option value="polish">Polish</option>
+              <option value="ukrainian">Ukrainian</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content" role="main">
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-card" role="region" aria-labelledby="hero-title">
+
+          <!-- LEFT column (kept classes and data attributes) -->
+          <div class="hero-text">
+            <p class="eyebrow">Tabletop • Social • Organized</p>
+            <h1 id="hero-title">Craft — Play — Remember</h1>
+            <p class="lead">Join players and game masters from around the world. Host campaigns, find groups, or build a legendary adventure — all in one place.</p>
+
+            <div class="hero-actions">
+              <a href="find-game.html" class="btn primary-btn" data-action="join" data-i18n="btn-join-campaign">Join a Campaign</a>
+              <a href="create-campaign.html" class="btn secondary-btn" data-action="dm" data-i18n="btn-become-dm">Become a Dungeon Master</a>
+              
+            </div>
+           
+
+            <div class="hero-meta" aria-hidden="false">
+              <span class="meta-pill">Active campaigns: <strong>1,248</strong></span>
+              <span class="meta-pill">Online now: <strong>312</strong></span>
+              
+            </div>
+          </div>
+
+          <!-- RIGHT column (visual) -->
+          
+        <div class="hero-visual" aria-hidden="true">
+            <img
+            src="ork-logo.png" 
+            alt="Campaign artwork" 
+            id="orc-image"
+            class="hero-image"
+            loading="lazy"
+            draggable="false"
+            />
+
+            <div class="floating-card" aria-hidden="true">
+                <div class="card-inner">
+                    <div class="card-head">Quick Actions</div>
+                    <div class="card-body">
+                        <button class="btn secondary-btn" id="mercy-btn">Mercy</button>
+                        <button class="btn primary-btn" id="kill-btn">Kill</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      </div>
+    </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <div class="feature-list">
+          <div class="feature-item">
+            <h3>Campaign Management</h3>
+            <p>Organize sessions, notes and NPCs in one place.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Find Players</h3>
+            <p>Match with players by time, experience and tone.</p>
+          </div>
+          <div class="feature-item">
+            <h3>Secure &amp; Social</h3>
+            <p>Built-in chat, invites and verified game masters.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer" role="contentinfo">
+      
+    </footer>
+  </main>
+
+  <!-- scripts kept intact -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

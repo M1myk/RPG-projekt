@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Dashboard - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="session.css"> 
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                Chronicles of Adventure
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" ></a></li>
+                    <li><a href="find-game.html">Find a Game</a></li>
+                    <li><a href="create-campaign.html">Create</a></li>
+                    <li><a href="campaign-panel.html">My Campaigns</a></li>
+                    <li id="nav-user-action"><a href="login.html">Sign In</a></li>
+                    <li>
+                        <select class="language" id="language" name="language">
+                        <option value="english">English</option>
+                        <option value="polish">Polish</option>
+                        <option value="ukrainian">Ukrainian</option>
+                     </select>
+                    </li>
+
+                </ul>
+            </nav>
+           
+        </div>
+    </header>
+
+    <main class="session-dashboard-main">
+        <div class="container" id="sessionDetails">
+            <!-- Інформація про кампанію -->
+            <div class="campaign-header">
+                <h1 id="campaign-name">Loading...</h1>
+                <div class="campaign-meta">
+                    <p><strong>System:</strong> <span id="campaign-system"></span></p>
+                    <p><strong>Players:</strong> <span id="campaign-players"></span></p>
+                    <p><strong>Invite Code:</strong> <span id="session-code"></span></p> 
+                </div>
+                <div class="campaign-description"   id="campaign-description">
+                    
+                </div>
+
+            <!-- Головна кнопка дії -->
+            <div class="start-session-container">
+                <a href="#" id="startSessionBtn" class="btn primary-btn start-btn">Start Live Session</a>
+                <p>Launch the interactive map and start the game for you and your players.</p>
+            </div>
+
+            <!-- Панель керування кампанією -->
+            <div class="management-panel">
+                <h2>Campaign Management</h2>
+                <div class="management-grid">
+                    <a href="#" id="manage-creatures-link" class="tool-card">
+                        <div class="tool-icon" id="icon-maps"></div>
+                        <h3>Creatures</h3>
+                        <p>Add and manage creatures in your campaign.</p>
+                    </a>
+                    <a href="#" id="gm-notes-link" class="tool-card">
+                        <div class="tool-icon" id="icon-notes"></div>
+                        <h3>GM Notes</h3>
+                        <p>Keep your secret notes and plot points.</p>
+                    </a>
+                    <a href="#" id="campaign-settings-link" class="tool-card">
+                        <div class="tool-icon" id="icon-settings"></div>
+                        <h3>Campaign Settings</h3>
+                        <p>Edit campaign name, description, and image.</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Небезпечна зона -->
+            <div class="danger-zone">
+                <h2>Danger Zone</h2>
+                <button class="btn danger-btn" id="deleteCampaignBtn" style="display: none;">Delete This Campaign</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal dla ustawień kampanii -->
+    <div id="campaign-settings-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="close-campaign-settings-modal" class="close-btn">&times;</button>
+            <h2>Campaign Settings</h2>
+            <form id="campaign-settings-form">
+                <div class="form-group">
+                    <label for="campaign-settings-name">Campaign Name:</label>
+                    <input type="text" id="campaign-settings-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="campaign-settings-description">Description:</label>
+                    <textarea id="campaign-settings-description" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="campaign-settings-image">Image URL:</label>
+                    <input type="text" id="campaign-settings-image" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="cancel-campaign-settings" class="btn secondary-btn">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer"></footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script src="session.js"></script>
+</body>
+</html>

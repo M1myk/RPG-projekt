@@ -1,0 +1,277 @@
+
+.session-dashboard-main {
+    padding: 100px 0;
+    color: var(--color-text-light);
+}
+
+.session-dashboard-main .container{
+    background-color: var(--color-bg-light);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 1100px;
+    width: 100%;
+}
+.campaign-header {
+    text-align: center;
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+
+
+.campaign-header h1 {
+    font-size: 3em;
+    color: var(--color-primary);
+}
+
+.campaign-meta {
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+    opacity: 0.8;
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 10px;
+}
+
+.campaign-description {
+    margin-top: 10px;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--color-primary);
+    padding-bottom: 30px;
+}
+
+.start-session-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: var(--border-radius);
+    margin-bottom: 50px;
+}
+
+.start-btn {
+    
+    font-size: 1.5em;
+    height: auto;
+    margin-bottom: 15px;
+}
+.edit-btn {
+    width: auto;
+    font-size: 1.5em;
+    height: auto;
+    
+}
+
+.start-session-container p {
+    opacity: 0.7;
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--color-primary);
+}
+
+.start-session-container label {
+    opacity: 0.7;
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.management-panel, .danger-zone {
+    margin-top: 40px;
+}
+
+.management-panel h2, .danger-zone h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+}
+
+.management-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.management-grid p{
+    color: white;
+}
+
+p{
+    color: var(--color-primary);
+}
+
+.tool-card {
+    background-color: var(--color-bg-dark);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid var(--color-primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    text-decoration: none;
+}
+
+.tool-card h3 {
+    margin-top: 15px;
+    color: var(--color-accent);
+}
+
+.tool-card p {
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+.tool-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: var(--color-primary);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+
+/* Іконки (можна завантажити SVG і вказати тут) */
+#icon-players { -webkit-mask-image: url('icons/users.svg'); mask-image: url('icons/users.svg'); }
+#icon-maps   { -webkit-mask-image: url('icons/map.svg'); mask-image: url('icons/map.svg'); }
+#icon-notes  { -webkit-mask-image: url('icons/book.svg'); mask-image: url('icons/book.svg'); }
+#icon-settings{ -webkit-mask-image: url('icons/settings.svg'); mask-image: url('icons/settings.svg'); }
+
+.danger-zone {
+    background-color: rgba(158, 42, 43, 0.1);
+    border: 1px solid #9e2a2b;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+/* Style dla modala ustawień kampanii */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 2em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover {
+    color: var(--color-primary);
+}
+
+.modal-content h2 {
+    color: var(--color-primary);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content .form-group {
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: var(--font-heading);
+    color: var(--color-text-dark);
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--font-body);
+}
+
+.modal-content .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* Styles for read-only character sheet */
+.character-sheet {
+    background-color: rgba(0,0,0,0.1);
+    color: var(--color-primary);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: left;
+    
+}
+.sheet-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-primary);
+}
+.sheet-section:last-child {
+    border-bottom: none;
+}
+.sheet-section h3 {
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+.sheet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+.stat-block {
+    background-color: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 4px;
+}
+.stat-block .label {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+.stat-block .value {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.personality-block p {
+    margin-bottom: 5px;
+}

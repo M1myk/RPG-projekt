@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="session.css"> <!-- Використовуємо стилі з панелі GM для узгодженості -->
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                Chronicles of Adventure
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="find-game.html">Find a Game</a></li>
+                    <li><a href="create-campaign.html">Create</a></li>
+                    <li><a href="campaign-panel.html">My Campaigns</a></li>
+                    <li id="nav-user-action"><a href="login.html">Sign In</a></li>
+                    <li>
+                        <select class="language" id="language" name="language">
+                        <option value="english">English</option>
+                        <option value="polish">Polish</option>
+                        <option value="ukrainian">Ukrainian</option>
+                     </select>
+                    </li>
+
+                </ul>
+            </nav>
+           
+        </div>
+    </header>
+
+    <main class="session-dashboard-main">
+        <div class="container" id="player-dashboard">
+            
+            <!-- Цей блок буде замінено динамічно через JavaScript -->
+            <div class="loading-container" style="text-align: center;">
+                <h1 id="campaign-name">Loading Campaign...</h1>
+                <p class="loading-message">Checking for your character...</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer"></footer>
+    
+    <!-- Скрипти -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="session-player.js"></script>
+</body>
+</html>

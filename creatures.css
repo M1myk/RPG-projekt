@@ -1,0 +1,48 @@
+.management-main { padding: 100px 0; }
+.header-with-button { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.content-columns { display: flex; gap: 40px; }
+.list-column { flex: 1; }
+.form-column { width: 400px; flex-shrink: 0; }
+
+h1 { color: var(--color-primary); }
+h2 { 
+    height: 40px;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 30px;
+    padding-top: 10px;
+    margin-bottom: -3px;
+    
+}
+.creatures-list { background-color: white; border-radius: var(--border-radius); padding: 20px; min-height: 400px; }
+
+.creature-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px; border-bottom: 1px solid #eee;
+}
+.creature-item:last-child { border-bottom: none; }
+.creature-item button { font-size: 0.8em; padding: 5px 10px; }
+
+/* Використовуємо стилі з create-campaign.css для форми */
+#addCreatureForm { background-color: #f9f9f9; padding: 25px; border-radius: var(--border-radius); }
+#addCreatureForm .form-group { margin-bottom: 15px; }
+#addCreatureForm label { font-size: 1em; }
+
+
+/* notattki gm */
+#notes-editor {
+    width: 100%;
+    min-height: 60vh;
+    padding: 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+#save-status {
+    margin-top: 10px;
+    text-align: right;
+    font-style: italic;
+    opacity: 0.7;
+}

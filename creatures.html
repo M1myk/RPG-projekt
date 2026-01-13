@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Creatures - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="creatures.css"> <!-- Новий CSS -->
+</head>
+<body>
+    <header class="main-header"><!-- Ваш стандартний хедер --></header>
+
+    <main class="management-main">
+        <div class="container">
+            <div class="header-with-button">
+                <h1>Manage Creatures</h1>
+                <a href="#" id="back-to-dashboard-link" class="btn secondary-btn back-btn">Back to Session</a>
+                
+            </div>
+
+            <div class="content-columns">
+                <!-- Ліва колонка: Список існуючих істот -->
+                <div class="list-column">
+                    <h2>Existing Creatures</h2>
+                    <div id="creatures-list" class="creatures-list">
+                        <p>Loading creatures...</p>
+                    </div>
+                </div>
+
+                <!-- Права колонка: Форма для додавання нової істоти -->
+                <div class="form-column">
+                    <h2>Add New Creature</h2>
+                    <form id="addCreatureForm">
+                        <div class="form-group">
+                            <label for="creatureName">Creature Name:</label>
+                            <input type="text" id="creatureName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="creatureTokenUrl">Token Image URL:</label>
+                            <input type="text" id="creatureTokenUrl" placeholder="https://example.com/token.png" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="creatureHP">Hit Points (HP):</label>
+                            <input type="number" id="creatureHP" value="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="creatureAC">Armor Class (AC):</label>
+                            <input type="number" id="creatureAC" value="12" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary-btn">Add Creature</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Скрипти -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="creatures.js"></script> <!-- Новий JS -->
+</body>
+</html>

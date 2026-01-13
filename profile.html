@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronicles of Adventure</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href=""> 
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                Chronicles of Adventure
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="find-game.html">Find a Game</a></li>
+                    <li><a href="create-campaign.html">Create</a></li>
+                    <li><a href="campaign-panel.html">My Campaigns</a></li>
+                    <li><a href="#" class="active">My profile</a></li>
+                    
+
+                </ul>
+            </nav>
+           
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-container">
+                <h1>My Profile</h1>
+                <p>Welcome to your profile page.</p>
+                <p>Logged in as: <strong id="user-email-display">Loading...</strong></p>
+                
+                <hr style="margin: 30px 0; border-color: var(--color-primary);">
+
+                <h2>Your Settings</h2>
+            </div>
+            <li id="nav-logout" ><a href="#"class="logout-btn">Logout</a></li>
+        </div>
+       
+    </main>
+    
+    
+     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

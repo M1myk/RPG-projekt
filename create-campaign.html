@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Campaign - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css"> <!-- Ogólne style, które już masz -->
+    <link rel="stylesheet" href="create-campaign.css"> <!-- Nowy plik CSS dla tej strony -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href=""> 
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                Chronicles of Adventure
+            </a>
+           <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="find-game.html" >Find a Game</a></li>
+                    <li><a href="#" class="active">Create</a></li>
+                    <li><a href="campaign-panel.html">My Campaigns</a></li>
+                    <li id="nav-user-action"><a href="login.html">Sign In</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="create-campaign-main">
+        <div class="container">
+            <h1>Create New Campaign</h1>
+            <form id="createCampaignForm" class="campaign-form">
+                <div class="form-group">
+                    <label for="campaignName">Campaign Name:</label>
+                    <input type="text" id="campaignName" name="campaignName" required placeholder="E.g., Brzydkie Twarze">
+                </div>
+
+                <div class="form-group">
+                    <label for="gameSystem">Game System:</label>
+                    <select id="gameSystem" name="gameSystem" required>
+                        <option value="">Select System</option>
+                        <option value="dnd5e">D&D 5th Edition</option>
+                        
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="campaignDescription">Campaign Description:</label>
+                    <textarea id="campaignDescription" name="campaignDescription" rows="6" placeholder="Trolle i Elfy graja na gitarze"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="maxPlayers">Max Players:</label>
+                    <input type="number" id="maxPlayers" name="maxPlayers" min="1" max="10" value="4">
+                </div>
+
+                <div class="form-group">
+    <label for="campaignImage">Campaign Image URL:</label>
+    <input type="text" id="campaignImage" name="campaignImage" placeholder="https://example.com/link-to-your-image.jpg">
+</div>
+
+                <hr>
+                    <h2>Character Creation Rules</h2>
+                    <p>Set the rules for players creating characters in this campaign.</p>
+                    
+                    <div class="form-group">
+                        <label for="skillProficiencyLimit">Skill Proficiency Limit:</label>
+                        <input type="number" id="skillProficiencyLimit" value="2" min="1" max="10">
+                        <small>How many skill proficiencies can a player choose (in addition to their class/background)?</small>
+                    </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn primary-btn">Create Campaign</button>
+                    <button type="reset" class="btn secondary-btn">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        
+       
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="create-campaign.js"></script> 
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Campaigns - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="campaign-panel.css"> 
+    <link rel="icon" type="image/png" href="">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                Chronicles of Adventure
+            </a>
+           <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="find-game.html">Find a Game</a></li>
+                    <li><a href="create-campaign.html">Create</a></li>
+                    <li><a href="campaign-panel.html" class="active">My Campaigns</a></li>
+                    <li id="nav-user-action"><a href="login.html">Sign In</a></li>
+                </ul>
+            </nav>
+           
+        </div>
+    </header>
+
+    <main class="campaign-panel-main"> 
+        <div class="container">
+           <div class="header-with-button">
+    <h1>My Campaigns</h1>
+   
+        </div>
+            <div class="campaigns-grid-container" id="campaignsList">
+               
+            </div>
+        </div>
+S
+        <div style="display: block; width: 100px; border: 1px solid rgb(89, 61, 0); margin-left: 1250px; text-align: center; ">
+            <a href="test.html" style="color: rgb(89, 61, 0); ">Test</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="campaign-panel.js"></script> 
+</body>
+</html>

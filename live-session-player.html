@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Session - Player View</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="live-session.css"> 
+</head>
+<body>
+    <header class="live-session-header">
+        <div class="container">
+            <h1 id="campaign-name-header">Loading Campaign...</h1>
+            <a href="#" id="back-to-session-link" class="btn secondary-btn small-btn">Back to Session</a>
+        </div>
+    </header>
+
+    <main class="live-session-main">
+        
+        <div class="map-area">
+            <div id="map-container">
+                    
+            </div>
+        </div>
+
+        
+        <aside class="gm-sidebar">
+            
+            <div class="sidebar-widget">
+                <h3>History & Log</h3>
+                <div class="history-log" id="history-log">
+                    <p class="log-entry system">Connecting to session...</p>
+                </div>
+            </div>
+
+            <!-- 2. Rzuty kostkami Gracza -->
+            <div class="sidebar-widget">
+                <h3>My Dice</h3>
+                <div class="dice-roller" id="dice-roller">
+                    <button class="die-btn" data-die="d4">d4</button>
+                    <button class="die-btn" data-die="d6">d6</button>
+                    <button class="die-btn" data-die="d8">d8</button>
+                    <button class="die-btn" data-die="d10">d10</button>
+                    <button class="die-btn" data-die="d12">d12</button>
+                    <button class="die-btn" data-die="d20">d20</button>
+                </div>
+                <p class="dice-result" id="dice-result"></p>
+            </div>
+
+            <!-- 3. Karta Postaci (uproszczona) -->
+            <div class="sidebar-widget">
+                <h3 id="my-character-name">My Character</h3>
+                <div id="my-character-stats">
+                    <!-- Podstawowe statystyki postaci -->
+                </div>
+            </div>
+
+            <!-- 4. Postacie Graczy (tylko do odczytu) -->
+            <div class="sidebar-widget">
+                <h3>Characters on Map</h3>
+                <div id="characters-on-map-list" class="character-list">
+                    <!-- Lista postaci będzie tutaj -->
+                </div>
+            </div>
+
+            <!-- 5. Stwory na Mapie (tylko do odczytu) -->
+            <div class="sidebar-widget">
+                <h3>Creatures on Map</h3>
+                <div id="creatures-on-map-list" class="creature-list">
+                    <!-- Lista stworów będzie tutaj -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Скрипти -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="live-session-player.js"></script> <!-- Новий скрипт -->
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Game - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="find-game.css"> <!-- Dedykowane style dla tej strony -->
+    <link rel="icon" type="image/png" href="">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                Chronicles of Adventure
+            </a>
+           <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="find-game.html" class="active">Find a Game</a></li>
+                    <li><a href="create-campaign.html">Create</a></li>
+                    <li><a href="campaign-panel.html">My Campaigns</a></li>
+                    <li id="nav-user-action"><a href="login.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="campaign-find-main"> 
+        <div class="container">
+            <div class="join-form-container">
+                <h1>Join a Campaign</h1>
+                <p class="subtitle">Enter the 6-character code your Game Master provided.</p>
+
+                <form id="joinGameForm">
+                    <div class="form-group">
+                        <input type="text" id="sessionCodeInput" placeholder="E.g., A4F9K2" maxlength="6" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary-btn" id="joinGameButton">Join Game</button>
+                    </div>
+                </form>
+                <!-- Miejsce na komunikaty zwrotne dla użytkownika -->
+                <p id="feedbackMessage" class="feedback"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+           
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="find-game.js"></script> 
+</body>
+</html>

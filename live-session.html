@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Session - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="live-session.css"> 
+</head>
+<body>
+   
+    <header class="live-session-header">
+        <div class="container">
+            <h1 id="campaign-name-header">Loading Campaign...</h1>
+            <a href="#" id="back-to-dashboard-link" class="btn secondary-btn small-btn">Back to Session</a>
+        </div>
+    </header>
+
+    <main class="live-session-main">
+        
+        <div class="map-area">
+            <div id="map-container">
+                <!-- Tokens of players and NPCs will be added here dynamically -->
+            </div>
+        </div>
+
+        <!-- Prawa kolumna: Panel sterowania MG -->
+        <aside class="gm-sidebar">
+            <div class="sidebar-widget">
+                <!-- Taby do organizacji -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="history">History</button>
+                    <button class="tab-btn" data-tab="characters">Characters</button>
+                    <button class="tab-btn" data-tab="creatures">Creatures</button>
+                </div>
+
+                <!-- Tab: Historia -->
+                <div class="tab-content active" id="tab-history">
+                    <h3>History & Log</h3>
+                    <div class="history-log" id="history-log">
+                        <p class="log-entry system">Session just started. Waiting for the GM...</p>
+                    </div>
+                    <form id="story-form" class="story-input-form">
+                        <textarea id="story-input" placeholder="Describe what's happening..."></textarea>
+                        <button type="submit" class="btn primary-btn">Send</button>
+                    </form>
+                    <h3>Dice</h3>
+                    <div class="dice-roller" id="dice-roller">
+                        <button class="die-btn" data-die="d4">d4</button>
+                        <button class="die-btn" data-die="d6">d6</button>
+                        <button class="die-btn" data-die="d8">d8</button>
+                        <button class="die-btn" data-die="d10">d10</button>
+                        <button class="die-btn" data-die="d12">d12</button>
+                        <button class="die-btn" data-die="d20">d20</button>
+                    </div>
+                    <p class="dice-result" id="dice-result"></p>
+                </div>
+
+                <!-- Tab: Postacie -->
+                <div class="tab-content" id="tab-characters">
+                    <h3>Characters on Map</h3>
+                    <div id="characters-on-map-list" class="character-list">
+                        <!-- Lista aktywnych postaci na mapie będzie tutaj -->
+                    </div>
+                </div>
+
+                <!-- Tab: Stwory -->
+                <div class="tab-content" id="tab-creatures">
+                    <h3>Creatures on Map</h3>
+                    <div id="creatures-on-map-list" class="creature-list">
+                        <!-- Lista aktywnych stworów na mapie będzie tutaj -->
+                    </div>
+                    <div class="add-creature-section">
+                        <select id="creature-template-select">
+                            <option value="">-- Select a creature to add --</option>
+                        </select>
+                        <button id="add-creature-btn" class="btn primary-btn small-btn">Add to Map</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <div id="character-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <div id="modal-body">
+                <!-- Повний лист персонажа буде згенеровано тут -->
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="live-session.js"></script> <!-- Новий скрипт для цієї сторінки -->
+</body>
+</html>

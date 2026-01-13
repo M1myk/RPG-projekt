@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GM Notes - Chronicles of Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="creatures.css"> 
+</head>
+<body>
+    <header class="main-header"></header>
+
+    <main class="management-main">
+        <div class="container">
+            <div class="header-with-button">
+                <h1>GM Secret Notes</h1>
+                <p>Your notes are saved automatically as you type. Only you can see them.</p>
+                <a href="#" id="back-to-dashboard-link" class="btn secondary-btn back-btn">Back to Session</a>
+            </div>
+            
+            <textarea id="notes-editor" placeholder="Write your secret plot points, NPC details, and ideas here..."></textarea>
+            <p id="save-status"></p>
+        </div>
+    </main>
+
+    <!-- Скрипти -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="gm-notes.js"></script> <!-- Новий JS -->
+</body>
+</html>

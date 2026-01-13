@@ -1,0 +1,75 @@
+/* Style dedykowane dla strony "Find a Game" */
+
+.campaign-find-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+.join-form-container {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 40px 50px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-primary);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.join-form-container h1 {
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+#sessionCodeInput {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-bg-dark);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    color: var(--color-text-light);
+    font-family: monospace;
+    font-size: 2em; /* Duży, czytelny tekst */
+    text-align: center;
+    letter-spacing: 4px; /* Rozsuwa znaki */
+    text-transform: uppercase; /* Automatycznie zmienia na wielkie litery */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#sessionCodeInput:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 8px rgba(160, 82, 45, 0.5);
+}
+
+#sessionCodeInput::placeholder {
+    color: rgba(232, 219, 207, 0.3);
+}
+
+.form-actions {
+    margin-top: 25px;
+}
+
+.feedback {
+    margin-top: 20px;
+    font-weight: bold;
+    min-height: 24px; /* Zapobiega "skakaniu" layoutu */
+    transition: color 0.3s;
+}
+
+.feedback-error {
+    color: #e74c3c; /* Czerwony kolor dla błędu */
+}
+
+.feedback-success {
+    color: #2ecc71; /* Zielony kolor dla sukcesu */
+}

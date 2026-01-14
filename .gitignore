@@ -1,0 +1,17 @@
+# Node
+node_modules/
+
+# Firebase local
+
+firebase-config.js
+
+
+# Build
+
+
+# IDE
+.vscode/
+
+
+
+

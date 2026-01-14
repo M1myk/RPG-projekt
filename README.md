@@ -201,3 +201,4 @@ Ten przewodnik jest przeznaczony dla deweloperów, którzy chcą uruchomić proj
 1.  Відкрийте папку проєкту у VS Code.
 2.  Натисніть правою кнопкою миші на файл `index.html`.
 3.  Виберіть **"Open with Live Server"**.
+# RPG-projekt

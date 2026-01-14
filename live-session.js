@@ -26,9 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Function to track user activity in game sessions
+    function trackActivity(user) {
+        if (user) {
+            db.collection('users').doc(user.uid).update({
+                lastActivity: firebase.firestore.FieldValue.serverTimestamp(),
+                isOnline: true
+            }).catch(err => console.error('Activity tracking error:', err));
+        }
+    }
+
     auth.onAuthStateChanged(user => {
-        if (user) initializeApp(user);
-        else window.location.href = 'login.html';
+        if (user) {
+            initializeApp(user);
+            // Track initial activity when entering session
+            trackActivity(user);
+        } else {
+            window.location.href = 'login.html';
+        }
     });
 
     function initializeApp(user) {
@@ -368,7 +383,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (event.target.classList.contains('character-hp')) {
                 const charId = event.target.dataset.id;
                 const newHp = parseInt(event.target.value);
-                if (charId) charactersRef.doc(charId).update({ currentHp: newHp });
+                if (charId) {
+                    trackActivity(user);
+                    charactersRef.doc(charId).update({ currentHp: newHp });
+                }
             }
         });
 
@@ -468,6 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ev.preventDefault(); 
             const content = (storyInput && storyInput.value || '').trim(); 
             if (!content) return;
+            trackActivity(user);
             historyCollectionRef.add({ author: 'MG', content, type: 'story', timestamp: firebase.firestore.FieldValue.serverTimestamp() }).catch(console.error);
             storyInput.value = '';
         });
@@ -475,6 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Obsługa rzutów kostkami
         diceRoller && diceRoller.addEventListener('click', ev => {
             if (ev.target.classList.contains('die-btn')) {
+                trackActivity(user);
                 const die = ev.target.dataset.die || 'd6'; 
                 const sides = parseInt(die.substring(1)) || 6;
                 const result = Math.floor(Math.random() * sides) + 1; 
@@ -485,6 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Obsługa dodawania stworów z szablonu na mapę
         addCreatureBtn && addCreatureBtn.addEventListener('click', () => {
+            trackActivity(user);
             const templateId = creatureTemplateSelect.value; 
             if (!templateId) return;
             creatureTemplatesRef.doc(templateId).get().then(doc => {
@@ -504,6 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Obsługa zmiany HP stwora
         creaturesOnMapList.addEventListener('change', ev => {
             if (ev.target.classList.contains('hp-input')) {
+                trackActivity(user);
                 const id = ev.target.dataset.id; 
                 const hp = parseInt(ev.target.value) || 0; 
                 if (id) creaturesOnMapRef.doc(id).update({ currentHp: hp }).catch(console.error);
@@ -513,6 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Obsługa usuwania stwora z mapy
         creaturesOnMapList.addEventListener('click', ev => {
             if (ev.target.classList.contains('delete-creature-btn')) {
+                trackActivity(user);
                 const id = ev.target.dataset.id; 
                 if (!id) return; 
                 if (confirm('Usunąć tego stwora z mapy?')) creaturesOnMapRef.doc(id).delete().catch(console.error);

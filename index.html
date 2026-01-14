@@ -8,7 +8,7 @@
   <!-- External stylesheet (all styles moved to style.css) -->
   <link rel="stylesheet" href="style.css">
   <!-- Fonts (kept as you had them) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400" rel="stylesheet">
 
   <meta name="description" content="Find or run unforgettable tabletop campaigns — beautifully organized, instantly social.">
 </head>
@@ -25,12 +25,12 @@
           <li><a href="find-game.html" data-i18n="nav-find-game">Find a Game</a></li>
           <li><a href="create-campaign.html" data-i18n="nav-create">Create</a></li>
           <li><a href="campaign-panel.html" data-i18n="nav-my-campaigns">My Campaigns</a></li>
-          <li id="nav-user-action"><a href="login.html" data-i18n="nav-sign-in">Sign In</a></li>
+          <li id="nav-user-action" style="visibility: hidden;"><a href="login.html" data-i18n="nav-sign-in">Sign In</a></li>
           <li>
-            <select class="language" id="language" name="language">
-              <option value="english">English</option>
-              <option value="polish">Polish</option>
-              <option value="ukrainian">Ukrainian</option>
+            <select class="language" id="language" name="language" aria-label="Select language">
+              <option value="en" data-label="English">English</option>
+              <option value="pl" data-label="Polski">Polish</option>
+              <option value="uk" data-label="Українська">Ukrainian</option>
             </select>
           </li>
         </ul>
@@ -45,9 +45,9 @@
 
           <!-- LEFT column (kept classes and data attributes) -->
           <div class="hero-text">
-            <p class="eyebrow">Tabletop • Social • Organized</p>
-            <h1 id="hero-title">Craft — Play — Remember</h1>
-            <p class="lead">Join players and game masters from around the world. Host campaigns, find groups, or build a legendary adventure — all in one place.</p>
+            <p class="eyebrow" data-i18n="eyebrow-tagline">Tabletop • Social • Organized</p>
+            <h1 id="hero-title" data-i18n="hero-title">Craft — Play — Remember</h1>
+            <p class="lead" data-i18n="hero-subtitle">Join players and game masters from around the world. Host campaigns, find groups, or build a legendary adventure — all in one place.</p>
 
             <div class="hero-actions">
               <a href="find-game.html" class="btn primary-btn" data-action="join" data-i18n="btn-join-campaign">Join a Campaign</a>
@@ -57,9 +57,9 @@
            
 
             <div class="hero-meta" aria-hidden="false">
-              <span class="meta-pill">Active campaigns: <strong>1,248</strong></span>
-              <span class="meta-pill">Online now: <strong>312</strong></span>
-              
+              <span class="meta-pill">Active campaigns: <strong id="active-campaigns-count">268</strong></span>
+              <span class="meta-pill">Active players: <strong id="online-users-count">1389</strong></span>
+              <p id="meta-error" class="feedback feedback-error" style="display: none; margin-top: 10px;"></p>
             </div>
           </div>
 
@@ -95,16 +95,16 @@
       <div class="container">
         <div class="feature-list">
           <div class="feature-item">
-            <h3>Campaign Management</h3>
-            <p>Organize sessions, notes and NPCs in one place.</p>
+            <h3 data-i18n="feature-campaign-title">Campaign Management</h3>
+            <p data-i18n="feature-campaign-desc">Organize sessions, notes and NPCs in one place.</p>
           </div>
           <div class="feature-item">
-            <h3>Find Players</h3>
-            <p>Match with players by time, experience and tone.</p>
+            <h3 data-i18n="feature-players-title">Find Players</h3>
+            <p data-i18n="feature-players-desc">Match with players by time, experience and tone.</p>
           </div>
           <div class="feature-item">
-            <h3>Secure &amp; Social</h3>
-            <p>Built-in chat, invites and verified game masters.</p>
+            <h3 data-i18n="feature-secure-title">Secure &amp; Social</h3>
+            <p data-i18n="feature-secure-desc">Built-in chat, invites and verified game masters.</p>
           </div>
         </div>
       </div>

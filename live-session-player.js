@@ -27,10 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let myCharacterData = null; // Zmienna do przechowywania danych postaci gracza
 
+    // Function to track user activity in game sessions
+    function trackActivity(user) {
+        if (user) {
+            db.collection('users').doc(user.uid).update({
+                lastActivity: firebase.firestore.FieldValue.serverTimestamp(),
+                isOnline: true
+            }).catch(err => console.error('Activity tracking error:', err));
+        }
+    }
+
     // Główna funkcja inicjalizująca
     auth.onAuthStateChanged(user => {
         if (user) {
             initializeApp(user);
+            // Track initial activity when entering session
+            trackActivity(user);
         } else {
             window.location.href = 'login.html';
         }
@@ -269,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 5. Rzuty kostkami gracza
         diceRoller.addEventListener('click', event => {
             if (event.target.classList.contains('die-btn')) {
+                trackActivity(user);
                 const die = event.target.dataset.die;
                 const sides = parseInt(die.substring(1));
                 const result = Math.floor(Math.random() * sides) + 1;
@@ -316,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('pointerup', (e) => {
             if (!activeToken) return;
+            trackActivity(user);
             const mapRect = mapContainer.getBoundingClientRect();
             const finalXPercent = `${(activeToken.offsetLeft / mapRect.width) * 100}%`;
             const finalYPercent = `${(activeToken.offsetTop / mapRect.height) * 100}%`;

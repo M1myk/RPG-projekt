@@ -1,109 +1,142 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Elementy nawigacji dla zalogowanych użytkowników
+// Hide auth button initially to prevent flickering
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAuthUI);
+} else {
+    initializeAuthUI();
+}
+
+function initializeAuthUI() {
+    // Navigation elements for logged in users
     const navCreate = document.getElementById('nav-create');
     const navMyCampaigns = document.getElementById('nav-my-campaigns');
     
-    // Nasz nowy uniwersalny element
+    // Universal user action element
     const navUserAction = document.getElementById('nav-user-action');
     
-    // Nowy element do wylogowania
+    // Logout element
     const navLogout = document.getElementById('nav-logout');
 
-    // Przycisk Sign Up na głównej stronie
+    // Sign Up button on main page
     const signupButton = document.getElementById('signup-button');
 
-    // Sprawdzamy, czy wszystkie elementy menu istnieją
+    // Check if all navigation elements exist
     if (!navCreate || !navMyCampaigns || !navUserAction || !navLogout) {
-        console.warn("Jeden lub więcej elementów nawigacji brakuje.");
+        console.warn("One or more navigation elements are missing.");
     }
 
-    // Główna funkcja Firebase do śledzenia stanu zalogowania
+    // Main Firebase function to track login state
     auth.onAuthStateChanged(user => {
         const userActionLink = navUserAction ? navUserAction.querySelector('a') : null;
 
         if (user) {
-            // --- UŻYTKOWNIK ZALOGOWANY ---
+            // --- USER IS LOGGED IN ---
             
-            // Pokazujemy linki przeznaczone dla zalogowanych
+            // Show links for logged in users
             if (navCreate) navCreate.style.display = 'list-item';
             if (navMyCampaigns) navMyCampaigns.style.display = 'list-item';
 
-            // Zmieniamy uniwersalny przycisk na "Mój profil"
+            // Change universal button to "My profile"
             if (userActionLink) {
-                userActionLink.textContent = 'Mój profil';
-                userActionLink.href = 'profile.html'; // Ustawiamy link do strony profilu
+                userActionLink.textContent = 'My profile';
+                userActionLink.href = 'profile.html';
             }
             
-            // Pokazujemy przycisk "Wyloguj"
+            // Show "Logout" button
             if (navLogout) {
                 navLogout.style.display = 'list-item';
                 const logoutLink = navLogout.querySelector('a');
                 logoutLink.onclick = (event) => {
                     event.preventDefault();
+                    
+                    // Mark user as offline before signing out
+                    if (user) {
+                        db.collection('users').doc(user.uid).update({
+                            isOnline: false
+                        }).catch(error => {
+                            console.error("Error marking user offline:", error);
+                        });
+                    }
+                    
                     auth.signOut().then(() => {
                         window.location.href = 'index.html';
                     });
                 };
             }
 
-            // Ukrywamy przycisk "Sign Up" na głównej stronie
+            // Hide "Sign Up" button on main page
             if (signupButton) {
                 signupButton.style.display = 'none';
             }
 
         } else {
-            // --- UŻYTKOWNIK NIEZALOGOWANY ---
+            // --- USER IS NOT LOGGED IN ---
 
-            // Ukrywamy linki dla zalogowanych
+            // Hide links for logged in users
             if (navCreate) navCreate.style.display = 'none';
             if (navMyCampaigns) navMyCampaigns.style.display = 'none';
             
-            // Zmieniamy uniwersalny przycisk na "Zaloguj się"
+            // Change universal button to "Sign In"
             if (userActionLink) {
-                userActionLink.textContent = 'Zaloguj się';
-                userActionLink.href = 'login.html'; // Ustawiamy link do strony logowania
+                userActionLink.textContent = 'Sign In';
+                userActionLink.href = 'login.html';
             }
             
-            // Ukrywamy przycisk "Wyloguj"
+            // Hide "Logout" button
             if (navLogout) navLogout.style.display = 'none';
             
-            // Pokazujemy przycisk "Sign Up" na głównej
+            // Show "Sign Up" button on main page
             if (signupButton) {
                 signupButton.style.display = 'block';
             }
         }
-    });
-});
-
-// Inicjalizacja systemu internacjonalizacji (i18n)
-document.addEventListener('DOMContentLoaded', () => {
-    // Sprawdzamy czy translations.js został załadowany
-    if (typeof setLanguage === 'function') {
-        // Wczytujemy zapisany język z localStorage lub używamy domyślnego 'english'
-        const savedLanguage = localStorage.getItem('language') || 'english';
         
-        // Dodajemy event listener do selektora języka
-        const langSelector = document.getElementById('language-selector') || document.getElementById('language');
-        if (langSelector) {
-            // Ustawiamy aktualną wartość selektora przed ustawieniem języka
-            langSelector.value = savedLanguage;
-            
-            // Ustawiamy język po załadowaniu strony
-            setLanguage(savedLanguage);
-            
-            // Event listener dla zmiany języka
-            langSelector.addEventListener('change', (event) => {
-                const selectedLang = event.target.value;
-                setLanguage(selectedLang);
-            });
-        } else {
-            // Jeśli nie ma selektora, ustawiamy język domyślny
-            setLanguage(savedLanguage);
+        // Make the button visible after auth state is determined
+        if (navUserAction) {
+            navUserAction.style.visibility = 'visible';
         }
-    }
-});
+    });
+}
 
-// Obsługa wyświetlania emaila użytkownika
+// Initialize internationalization system (i18n)
+function initializeLanguageSystem() {
+    // Check if translations.js has been loaded
+    if (typeof setLanguage !== 'function') {
+        console.warn('translations.js not loaded');
+        return;
+    }
+
+    // Load saved language from localStorage or use default 'en'
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    
+    const langSelector = document.getElementById('language');
+    if (langSelector) {
+        // Set current selector value
+        langSelector.value = savedLanguage;
+        
+        // Apply language to page
+        setLanguage(savedLanguage);
+        
+        // Event listener for language change
+        langSelector.addEventListener('change', (event) => {
+            const selectedLang = event.target.value;
+            setLanguage(selectedLang);
+        });
+    } else {
+        // If no selector, apply default language
+        setLanguage(savedLanguage);
+    }
+}
+
+// Run after DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initializeLanguageSystem, 100); // Small delay to ensure all elements are rendered
+    });
+} else {
+    initializeLanguageSystem();
+}
+
+// Handle user email display
 document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged(user => {
         const emailDisplayElement = document.getElementById('user-email-display');
@@ -113,34 +146,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Handle orc image interactions
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Знаходимо необхідні елементи за їхніми ID
     const orcImage = document.getElementById('orc-image');
     const killButton = document.getElementById('kill-btn');
     const mercyButton = document.getElementById('mercy-btn');
 
-    // Перевіряємо, чи всі елементи існують, щоб уникнути помилок
     if (orcImage && killButton && mercyButton) {
-
-        // 2. Додаємо слухача події до кнопки "Kill"
         killButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Запобігаємо стандартній дії, якщо це посилання
-            
+            event.preventDefault(); 
             console.log("Action: Kill");
-            // Змінюємо атрибут 'src' зображення
             orcImage.src = 'ork-photo-dead.png'; 
         });
 
-        // 3. Додаємо слухача події до кнопки "Mercy"
         mercyButton.addEventListener('click', (event) => {
             event.preventDefault();
-            
             console.log("Action: Mercy");
-            // Змінюємо атрибут 'src' зображення
             orcImage.src = 'ork-photo-alive.png';
         });
-
     } else {
         console.warn("One or more elements for the orc interaction are missing.");
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHomepageStats();
+    
+});
+
+

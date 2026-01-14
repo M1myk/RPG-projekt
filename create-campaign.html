@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,13 +18,19 @@
             </a>
            <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" >Home</a></li>
-                    <li><a href="find-game.html" >Find a Game</a></li>
-                    <li><a href="#" class="active">Create</a></li>
-                    <li><a href="campaign-panel.html">My Campaigns</a></li>
-                    <li id="nav-user-action"><a href="login.html">Sign In</a></li>
+                    <li><a href="index.html" data-i18n="nav-home">Home</a></li>
+                    <li><a href="find-game.html" data-i18n="nav-find-game">Find a Game</a></li>
+                    <li><a href="#" class="active" data-i18n="nav-create">Create</a></li>
+                    <li><a href="campaign-panel.html" data-i18n="nav-my-campaigns">My Campaigns</a></li>
+                    <li id="nav-user-action"><a href="login.html" data-i18n="nav-sign-in">Sign In</a></li>
                 </ul>
             </nav>
+            
+            <select id="language" class="language">
+                <option value="en">English</option>
+                <option value="pl">Polski</option>
+                <option value="uk">Українська</option>
+            </select>
             
         </div>
     </header>
@@ -89,6 +95,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="firebase-config.js"></script>
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script src="create-campaign.js"></script> 
 </body>

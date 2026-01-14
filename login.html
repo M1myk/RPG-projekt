@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,14 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    
-
+                    <li><a href="index.html" data-i18n="nav-home">Home</a></li>
+                    <li>
+                        <select class="language" id="language" name="language" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="pl">Polski</option>
+                        <option value="uk">Українська</option>
+                     </select>
+                    </li>
                 </ul>
             </nav>
            

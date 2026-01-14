@@ -24,6 +24,7 @@
 .campaign-header h1 {
     font-size: 3em;
     color: var(--color-primary);
+    font-family: Cinzel Decorative, serif;
 }
 
 .campaign-meta {

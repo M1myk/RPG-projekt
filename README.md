@@ -54,9 +54,15 @@ This guide is for developers who want to run the project on their local machine 
         ```javascript
         const firebaseConfig = {
           apiKey: "YOUR_COPIED_API_KEY",
-          // ... all other keys
+          authDomainЖ "PROJECT_NAME.firebaseapp.com",
+          projectiD: "PROJECT_ID_FROM_FIREBASE"
+          storageBucket: "PROJECT_NAMEt.firebasestorage.app",
+          messagingSenderId: "ID_FROM_FIREBASE",
+          appId: "APP_ID_FROM_FIREBASE",
+          measurementId: "MEASUREMENT_ID_FROM_FIREBASE"
         };
 
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
@@ -117,10 +123,16 @@ Ten przewodnik jest przeznaczony dla deweloperów, którzy chcą uruchomić proj
     *   Wklej skopiowany obiekt `firebaseConfig` i dodaj linie inicjalizacyjne:
         ```javascript
         const firebaseConfig = {
-          apiKey: "TWÓJ_SKOPIOWANY_KLUCZ_API",
-          // ... wszystkie pozostałe klucze
+          apiKey: "YOUR_COPIED_API_KEY",
+          authDomainЖ "PROJECT_NAME.firebaseapp.com",
+          projectiD: "PROJECT_ID_FROM_FIREBASE"
+          storageBucket: "PROJECT_NAMEt.firebasestorage.app",
+          messagingSenderId: "ID_FROM_FIREBASE",
+          appId: "APP_ID_FROM_FIREBASE",
+          measurementId: "MEASUREMENT_ID_FROM_FIREBASE"
         };
 
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();
@@ -181,10 +193,16 @@ Ten przewodnik jest przeznaczony dla deweloperów, którzy chcą uruchomić proj
     *   Вставте скопійований об'єкт `firebaseConfig` і додайте рядки ініціалізації:
         ```javascript
         const firebaseConfig = {
-          apiKey: "ВАШ_СКОПІЙОВАНИЙ_API_KEY",
-          // ... всі інші ключі
+          apiKey: "YOUR_COPIED_API_KEY",
+          authDomainЖ "PROJECT_NAME.firebaseapp.com",
+          projectiD: "PROJECT_ID_FROM_FIREBASE"
+          storageBucket: "PROJECT_NAMEt.firebasestorage.app",
+          messagingSenderId: "ID_FROM_FIREBASE",
+          appId: "APP_ID_FROM_FIREBASE",
+          measurementId: "MEASUREMENT_ID_FROM_FIREBASE"
         };
 
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const auth = firebase.auth();

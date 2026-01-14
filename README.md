@@ -55,7 +55,7 @@ This guide is for developers who want to run the project on their local machine 
         const firebaseConfig = {
           apiKey: "YOUR_COPIED_API_KEY",
           authDomainЖ "PROJECT_NAME.firebaseapp.com",
-          projectiD: "PROJECT_ID_FROM_FIREBASE"
+          projectiD: "PROJECT_ID_FROM_FIREBASE",
           storageBucket: "PROJECT_NAMEt.firebasestorage.app",
           messagingSenderId: "ID_FROM_FIREBASE",
           appId: "APP_ID_FROM_FIREBASE",
@@ -125,7 +125,7 @@ Ten przewodnik jest przeznaczony dla deweloperów, którzy chcą uruchomić proj
         const firebaseConfig = {
           apiKey: "YOUR_COPIED_API_KEY",
           authDomainЖ "PROJECT_NAME.firebaseapp.com",
-          projectiD: "PROJECT_ID_FROM_FIREBASE"
+          projectiD: "PROJECT_ID_FROM_FIREBASE",
           storageBucket: "PROJECT_NAMEt.firebasestorage.app",
           messagingSenderId: "ID_FROM_FIREBASE",
           appId: "APP_ID_FROM_FIREBASE",
@@ -195,7 +195,7 @@ Ten przewodnik jest przeznaczony dla deweloperów, którzy chcą uruchomić proj
         const firebaseConfig = {
           apiKey: "YOUR_COPIED_API_KEY",
           authDomainЖ "PROJECT_NAME.firebaseapp.com",
-          projectiD: "PROJECT_ID_FROM_FIREBASE"
+          projectiD: "PROJECT_ID_FROM_FIREBASE",
           storageBucket: "PROJECT_NAMEt.firebasestorage.app",
           messagingSenderId: "ID_FROM_FIREBASE",
           appId: "APP_ID_FROM_FIREBASE",

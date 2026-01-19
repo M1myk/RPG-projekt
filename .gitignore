@@ -4,7 +4,9 @@ node_modules/
 # Firebase local
 
 firebase-config.js
-
+.firebase/
+.firebaserc
+firebase.json
 
 # Build
 

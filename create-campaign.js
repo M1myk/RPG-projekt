@@ -8,6 +8,8 @@ function generateSessionCode(length = 6) {
     return result;
 }
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('createCampaignForm');
     const createButton = form.querySelector('button[type="submit"]');
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged(user => {
         if (!user) {
             // Jeśli użytkownik nie jest zalogowany, blokujemy formularz i proponujemy zalogowanie
-            form.innerHTML = `<p style="text-align: center;">Musisz być <a href="login.html">zalogowany</a>, aby utworzyć kampanię.</p>`;
+            form.innerHTML = `<p style="text-align: center;">You must be <a href="login.html">logged in</a> to create a campaign.</p>`;
             return;
         }
 
@@ -24,12 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             createButton.disabled = true;
-            createButton.textContent = 'Tworzenie...';
+            createButton.textContent = 'Creating...';
 
             const campaignName = document.getElementById('campaignName').value;
             const gameSystem = document.getElementById('gameSystem').value;
+            const imageUrl = document.getElementById('campaignImage').value;
 
-            if (!campaignName || !gameSystem) {
+            if (!campaignName || !gameSystem || !imageUrl) {
                 alert('Wypełnij wymagane pola.');
                 createButton.disabled = false; createButton.textContent = 'Utwórz kampanię';
                 return;
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: document.getElementById('campaignDescription').value,
                 maxPlayers: parseInt(document.getElementById('maxPlayers').value, 10),
                 currentPlayers: 1, // Тільки GM
-                image: document.getElementById('campaignImage').value || 'default-image-url.jpg',
+                image: document.getElementById('campaignImage').value || 'rebel-dnd-mapa-faerunu-pl.jpg',
                 sessionCode: generateSessionCode(),
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 ownerId: user.uid,

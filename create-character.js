@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (checkedSkills.length >= limit) {
                 document.querySelectorAll('#skills-list input[type="checkbox"]:not(:checked)').forEach(cb => cb.disabled = true);
-                showFeedback(`Wybrałeś maksymalnie ${limit} umiejętności.`, 'info');
+                showFeedback(`You selected maximum ${limit} skills.`, 'info');
             } else {
                 document.querySelectorAll('#skills-list input[type="checkbox"]').forEach(cb => cb.disabled = false);
-                showFeedback('', 'info'); // Czyścimy wiadomość
+                showFeedback('', 'info'); // Clear message
             }
         });
 
@@ -92,23 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             
             // Walidacja cech
-            if (rolledStats.length !== 6) { showFeedback('Najpierw musisz wyrzucić swoje cechy!', 'error'); return; }
+            if (rolledStats.length !== 6) { showFeedback('You must first roll your stats!', 'error'); return; }
             const statInputs = Array.from(document.querySelectorAll('.stat-input'));
             const inputValues = statInputs.map(input => parseInt(input.value) || 0).sort((a,b) => a-b);
             const rolledStatsSorted = [...rolledStats].sort((a,b) => a-b);
             if (JSON.stringify(inputValues) !== JSON.stringify(rolledStatsSorted)) {
-                showFeedback('Cechy które wpisałeś nie zgadzają się z wyrzuconymi wartościami.', 'error'); return;
+                showFeedback('Stats you entered don\'t match rolled values.', 'error'); return;
             }
 
             // Walidacja umiejętności
             const checkedSkillsCount = document.querySelectorAll('#skills-list input[type="checkbox"]:checked').length;
             if (checkedSkillsCount > campaignRules.skillProficiencyLimit) {
-                showFeedback(`Możesz wybrać maksymalnie ${campaignRules.skillProficiencyLimit} umiejętności.`, 'error'); return;
+                showFeedback(`You can select maximum ${campaignRules.skillProficiencyLimit} skills.`, 'error'); return;
             }
             
-            showFeedback('Walidacja powiodła się! Zapisuję...', 'success');
+            showFeedback('Validation passed! Saving...', 'success');
             saveCharBtn.disabled = true;
-            saveCharBtn.textContent = 'Zapisywanie...';
+            saveCharBtn.textContent = 'Saving...';
 
             const stats = { strength: parseInt(document.getElementById('strength').value), dexterity: parseInt(document.getElementById('dexterity').value), constitution: parseInt(document.getElementById('constitution').value), intelligence: parseInt(document.getElementById('intelligence').value), wisdom: parseInt(document.getElementById('wisdom').value), charisma: parseInt(document.getElementById('charisma').value) };
             const getModifier = (score) => Math.floor((score - 10) / 2);
@@ -137,13 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Zapisanie do Firestore
             db.collection('campaigns').doc(campaignId).collection('characters').add(newCharacter)
                 .then(() => {
-                    alert(`Postać ${newCharacter.name} została pomyślnie stworzerna!`);
+                    alert(`Character ${newCharacter.name} was successfully created!`);
                     window.location.href = `session-player.html?id=${campaignId}`;
                 })
                 .catch(error => {
-                    console.error("Błąd podczas tworzenia postaci:", error);
-                    alert("Wystąpił błąd.");
-                    saveCharBtn.disabled = false; saveCharBtn.textContent = 'Zapisz postać';
+                    console.error("Error creating character:", error);
+                    alert("An error occurred.");
+                    saveCharBtn.disabled = false; saveCharBtn.textContent = 'Save character';
                 });
         });
     }

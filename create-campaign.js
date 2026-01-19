@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Używamy onAuthStateChanged do niezawodnej weryfikacji
     auth.onAuthStateChanged(user => {
         if (!user) {
-            // Jeśli użytkownik nie jest zalogowany, blokujemy formularz i proponujemy zalogowanie
+            // If user is not logged in, block the form and suggest logging in
             form.innerHTML = `<p style="text-align: center;">You must be <a href="login.html">logged in</a> to create a campaign.</p>`;
             return;
         }
 
-        // Jeśli użytkownik jest zalogowany, dodajemy słuchacza do formularza
+        // If user is logged in, add listener to the form
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             createButton.disabled = true;
@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageUrl = document.getElementById('campaignImage').value;
 
             if (!campaignName || !gameSystem || !imageUrl) {
-                alert('Wypełnij wymagane pola.');
-                createButton.disabled = false; createButton.textContent = 'Utwórz kampanię';
+                alert('Fill in required fields.');
+                createButton.disabled = false; createButton.textContent = 'Create campaign';
                 return;
             }
 
@@ -59,9 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
             db.collection('campaigns').add(newCampaign).then(() => {
                 window.location.href = 'campaign-panel.html';
             }).catch((error) => {
-                console.error("Błąd podczas tworzenia kampanii: ", error);
-                alert('Podczas tworzenia kampanii wystąpił błąd.');
-                createButton.disabled = false; createButton.textContent = 'Utwórz kampanię';
+                console.error("Error creating campaign: ", error);
+                alert('An error occurred while creating the campaign.');
+                createButton.disabled = false; createButton.textContent = 'Create campaign';
             });
         });
     });

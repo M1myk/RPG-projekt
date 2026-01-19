@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerDashboard = document.getElementById('player-dashboard');
 
     if (!campaignId) {
-        playerDashboard.innerHTML = '<h1>Błąd: ID kampanii nie znaleziono w URL.</h1>';
+        playerDashboard.innerHTML = '<h1>Error: Campaign ID not found in URL.</h1>';
         return;
     }
 
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         leaveCampaignBtn.addEventListener('click', () => {
             const user = auth.currentUser;
             if (confirm('Are you sure you want to leave this campaign? This will also delete your character.')) {
-                // ... (ваш код для виходу з кампанії без змін)
+                
             }
         });
     }

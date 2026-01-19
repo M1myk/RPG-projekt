@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Слухаємо зміни в полі вводу
             notesEditor.addEventListener('keyup', () => {
-                saveStatus.textContent = 'Saving...';
+                saveStatus.textContent = 'Saving...';;
                 clearTimeout(debounceTimer);
                 
                 // "Debounce" - зберігаємо через 1.5 секунди після останнього натискання клавіші

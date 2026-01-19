@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const addCreatureForm = document.getElementById('addCreatureForm');
     const mainContainer = document.querySelector('.management-main .container');
 
-    // --- NIEZAWODNA WERYFIKACJA ID KAMPANII ---
-    if (!campaignId || campaignId.includes('${')) { // Sprawdzamy, czy ID istnieje i nie jest szablona tekstowym
-        mainContainer.innerHTML = '<h1>Błąd: Nieprawidłowe ID kampanii podane w URL.</h1><p>Wróć do pulpitu i spróbuj ponownie.</p>';
+    // --- RELIABLE CAMPAIGN ID VERIFICATION ---
+    if (!campaignId || campaignId.includes('${')) { // Check if ID exists and is not a text template
+        mainContainer.innerHTML = '<h1>Error: Invalid campaign ID provided in URL.</h1><p>Return to dashboard and try again.</p>';
         return;
     }
 
-    // Ustalamy prawidłowy link dla przycisku "Powrót do pulpitu"
+    // Set the correct link for the "Back to dashboard" button
     const backLink = document.getElementById('back-to-dashboard-link');
         if (backLink) {
             backLink.href = `session.html?id=${campaignId}`;
@@ -22,16 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     auth.onAuthStateChanged(user => {
         if (user) {
-            // Ścieżka do kolekcji jest teraz gwarantowana prawidłowa
+            // The path to the collection is now guaranteed to be correct
             const creaturesRef = db.collection('campaigns').doc(campaignId).collection('creatures');
 
-            // --- TWÓJ ISTNIEJĄCY KOD (bez zmian, działa prawidłowo) ---
+            // --- YOUR EXISTING CODE (unchanged, works correctly) ---
 
-            // Słuchacz do wyświetlania listy stworów
+            // Listener to display the list of creatures
             creaturesRef.onSnapshot(snapshot => {
                 creaturesListDiv.innerHTML = '';
                 if (snapshot.empty) {
-                    creaturesListDiv.innerHTML = '<p>Nie dodano jeszcze żadnych szablonów stworów.</p>';
+                    creaturesListDiv.innerHTML = '<p>No creature templates added yet.</p>';
                     return;
                 }
                 snapshot.forEach(doc => {
@@ -40,13 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     creatureEl.className = 'creature-item';
                     creatureEl.innerHTML = `
                         <span><strong>${creature.name}</strong> (HP: ${creature.maxHp}, AC: ${creature.armorClass})</span>
-                        <button class="btn danger-btn small-btn" data-id="${doc.id}">Usuń</button>
+                        <button class="btn danger-btn small-btn" data-id="${doc.id}">Delete</button>
                     `;
                     creaturesListDiv.appendChild(creatureEl);
                 });
             });
 
-            // Słuchacz dla formularza dodawania
+            // Listener for adding form
             addCreatureForm.addEventListener('submit', event => {
                 event.preventDefault();
                 const newCreature = {
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).catch(console.error);
             });
             
-            // Słuchacz dla przycisków usuwania
+            // Listener for delete buttons
             creaturesListDiv.addEventListener('click', event => {
                 if (event.target.tagName === 'BUTTON' && event.target.dataset.id) {
-                    if (confirm('Czy na pewno chcesz usunąć ten szablon stwora?')) {
+                    if (confirm('Are you sure you want to delete this creature template?')) {
                         creaturesRef.doc(event.target.dataset.id).delete().catch(console.error);
                     }
                 }

@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sessionDetailsContainer = document.getElementById('sessionDetails');
     if (!sessionDetailsContainer) {
-        console.error('Brakuje kontenera #sessionDetails w HTML');
+        console.error('Missing #sessionDetails container in HTML');
         return;
     }
 
     // Funkcja pomocnicza do pobierania element\u00f3w z logowaniem b\u0142\u0119du
     const getEl = (id) => {
         const el = document.getElementById(id);
-        if (!el) console.error(`Brakuje elementu w DOM: #${id}`);
+        if (!el) console.error(`Missing element in DOM: #${id}`);
         return el;
     };
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gmNotesLink = getEl('gm-notes-link');
 
     if (!campaignId) {
-        sessionDetailsContainer.innerHTML = '<h1>Błąd: ID kampanii nie znaleziono w URL.</h1>';
+        sessionDetailsContainer.innerHTML = '<h1>Error: Campaign ID not found in URL.</h1>';
         return;
     }
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     db.collection('campaigns').doc(campaignId).get()
       .then((doc) => {
         if (!doc.exists) {
-            sessionDetailsContainer.innerHTML = '<h1>Kampania nie znaleziona</h1>';
+            sessionDetailsContainer.innerHTML = '<h1>Campaign not found</h1>';
             return;
         }
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = auth.currentUser;
         // Je\u015bli chcesz debugowa\u0107 auth, rozwa\u017c dorzuci\u0107: console.log('Auth currentUser', user);
         if (!user || user.uid !== campaign.ownerId) {
-            sessionDetailsContainer.innerHTML = '<h1>Dostęp zabroniony</h1><p>Nie masz uprawnień do zarządzania tą kampanią.</p>';
+            sessionDetailsContainer.innerHTML = '<h1>Access denied</h1><p>You don\'t have permission to manage this campaign.</p>';
             return;
         }
 
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (deleteCampaignBtn) {
             deleteCampaignBtn.style.display = 'block';
             deleteCampaignBtn.addEventListener('click', () => {
-                if (confirm('Czy na pewno chcesz TRWALE USUNĄĆ tę kampanię? Tej czynności nie można cofnąć.')) {
+                if (confirm('Are you sure you want to PERMANENTLY DELETE this campaign? This action cannot be undone.')) {
                     db.collection('campaigns').doc(campaignId).delete().then(() => {
                         alert('Kampania została usunięta pomyślnie.');
                         window.location.href = 'campaign-panel.html';
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }).catch((error) => {
-        console.error("Błąd podczas pobierania szczegółów kampanii: ", error);
-        if (sessionDetailsContainer) sessionDetailsContainer.innerHTML = '<h1>Błąd</h1><p>Nie udało się załadować szczegółów kampanii.</p>';
+        console.error("Error fetching campaign details: ", error);
+        if (sessionDetailsContainer) sessionDetailsContainer.innerHTML = '<h1>Error</h1><p>Failed to load campaign details.</p>';
     });
 });

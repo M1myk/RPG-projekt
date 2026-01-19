@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     auth.onAuthStateChanged(user => {
         if (user) {
             // Використовуємо окрему кореневу колекцію для нотаток, щоб правила були простішими
-            const notesRef = db.collection('gm-notes').doc(`${user.uid}_${campaignId}`);
-
+            //const notesRef = db.collection('gm-notes').doc(`${user.uid}_${campaignId}`);
+            const notesRef = db.collection('campaigns').doc(campaignId).collection('gm-notes').doc(user.uid);
+            
             let debounceTimer;
 
             // Завантажуємо існуючі нотатки
